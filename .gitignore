@@ -1,0 +1,24 @@
+# data and generated results
+data/raw/fastq/
+data/ref/
+data/processed/
+results/
+logs/
+tools/
+env/
+notebooks/.ipynb_checkpoints/
+
+# large local artifacts
+*.fastq.gz
+*.fq.gz
+*.bam
+*.sam
+*.rds
+*.zip
+*.tar.gz
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
