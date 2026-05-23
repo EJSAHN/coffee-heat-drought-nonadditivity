@@ -1,1 +1,0 @@
-This directory is intentionally empty in the GitHub-ready repository. Running the pipeline writes QC reports, Salmon quantification, DESeq2 output, functional summaries, candidate-prioritization tables, and a consolidated analysis-table workbook here. Manuscript figure-generation code is intentionally not included in this repository.
