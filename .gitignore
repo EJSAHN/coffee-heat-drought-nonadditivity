@@ -22,3 +22,5 @@ notebooks/.ipynb_checkpoints/
 Thumbs.db
 *.bak
 *.tmp
+*.bai
+*_STARtmp/
