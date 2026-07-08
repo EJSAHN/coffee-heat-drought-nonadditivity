@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet("setup","download-rich-metadata","index","metadata","quant","deseq2","next","all")]
+    [ValidateSet("setup","download-rich-metadata","index","metadata","quant","deseq2","next","qc-validation","all")]
     [string]$Step = "all",
 
     # Default: repository root containing this RUN_PIPELINE.ps1 file.
