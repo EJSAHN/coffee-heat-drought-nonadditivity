@@ -39,9 +39,8 @@ scripts/
   powershell/   Windows and WSL runners
   bash/         Linux workflow steps executed inside WSL
   python/       Metadata parsing, metadata curation, tx2gene, Salmon command writing
-  R/            DESeq2, annotation, QC tables, candidate prioritization, table synthesis
+  R/            DESeq2, annotation, QC tables, candidate prioritization, table synthesis, validation analyses
 config/         Curated sample metadata after pipeline execution
-manuscript/     Methods and reference draft text
 results/        Generated outputs; not tracked by git
 ```
 
@@ -117,7 +116,15 @@ The quantification step is resume-aware. Existing FastQC outputs and existing Sa
 
 ### 8. Build synthesized analysis tables
 
-The `next` step writes annotation, module, QC, candidate-prioritization tables, and a consolidated Excel workbook. The `all` step runs through this table-synthesis stage. This repository intentionally does not include manuscript figure-generation code.
+The `next` step writes annotation, module, QC, candidate-prioritization tables, and a consolidated Excel workbook. The `all` step runs through this table-synthesis stage. This repository intentionally does not include final figure-assembly code.
+
+### 9. Run CL153 QC validation analyses
+
+```powershell
+.\RUN_PIPELINE.ps1 -Step qc-validation -Threads 8
+```
+
+This optional validation step evaluates CL153 low-mapping library exclusion, stage-local interaction models, and STAR genome-alignment counts. Details are provided in `docs/CL153_QC_validation.md`.
 
 ## Main outputs
 
@@ -126,21 +133,17 @@ results/deseq2/<analysis_group>/
 results/tables/*_nonadditivity_scores.tsv
 results/tables/*_top50_interaction_candidates.tsv
 results/next/tables/
-results/paper_pack_v1/
-results/paper_pack_v1/coffee_analysis_tables.xlsx
+results/analysis_tables/
+results/analysis_tables/coffee_analysis_tables.xlsx
+results/qc_validation/cl153_low_mapping_exclusion/
+results/qc_validation/cl153_stage_local/
+results/qc_validation/cl153_star_genome_alignment/
 ```
 
-## Manuscript methods
-
-A draft Materials and Methods section and the corresponding reference list are provided in:
-
-```text
-manuscript/materials_and_methods.md
-manuscript/references_cited.md
-```
 
 ## Notes
 
 - Raw FASTQ files, reference files, and generated results are intentionally excluded from git.
 - PowerShell scripts default to the cloned repository root and also accept `-ProjectRoot` for custom locations.
 - The micromamba root defaults to `$HOME/micromamba_roots/coffee_multistress` inside WSL.
+- STAR validation temporary files are written under the WSL home directory to avoid FIFO limitations on Windows-mounted drives.
