@@ -1,1 +1,15 @@
-This directory is intentionally empty in the GitHub-ready repository. Running the pipeline writes QC reports, Salmon quantification, DESeq2 output, functional summaries, candidate-prioritization tables, and a consolidated analysis-table workbook here. Manuscript figure-generation code is intentionally not included in this repository.
+# Results directory
+
+Generated outputs are written here by the analysis workflow and are excluded from git.
+
+Primary outputs include:
+
+```text
+results/deseq2/
+results/tables/
+results/next/
+results/analysis_tables/
+results/qc_validation/
+```
+
+The `qc_validation` directory is produced only when `RUN_PIPELINE.ps1 -Step qc-validation` is executed.
