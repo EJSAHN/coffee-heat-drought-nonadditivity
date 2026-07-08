@@ -1,9 +1,5 @@
 # Coffee heat-drought non-additivity reanalysis
 
-## Repository description
-
-Reproducible Windows/WSL workflow for reconstructing public *Coffea arabica* Icatu and *Coffea canephora* CL153 RNA-seq data, quantifying transcript abundance with Salmon, modeling heat-drought non-additivity with DESeq2, and generating analysis-ready tables.
-
 ## Overview
 
 This workflow reconstructs a balanced public RNA-seq design from five BioProjects:
